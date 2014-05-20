@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="WapTestProject">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="D:/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="WapTestProject.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="selenium-2.33.0/libs/apache-mime4j-0.6.jar"/>
+        <pathelement location="selenium-2.33.0/libs/bsh-1.3.0.jar"/>
+        <pathelement location="selenium-2.33.0/libs/cglib-nodep-2.1_3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-codec-1.6.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-collections-3.2.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-exec-1.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-io-2.2.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-jxpath-1.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-lang3-3.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/commons-logging-1.1.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/cssparser-0.9.9.jar"/>
+        <pathelement location="selenium-2.33.0/libs/guava-14.0.jar"/>
+        <pathelement location="selenium-2.33.0/libs/hamcrest-core-1.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/hamcrest-library-1.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/htmlunit-2.12.jar"/>
+        <pathelement location="selenium-2.33.0/libs/htmlunit-core-js-2.12.jar"/>
+        <pathelement location="selenium-2.33.0/libs/httpclient-4.2.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/httpcore-4.2.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/httpmime-4.2.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/ini4j-0.5.2.jar"/>
+        <pathelement location="selenium-2.33.0/libs/jcommander-1.29.jar"/>
+        <pathelement location="selenium-2.33.0/libs/jetty-websocket-8.1.8.jar"/>
+        <pathelement location="selenium-2.33.0/libs/jna-3.4.0.jar"/>
+        <pathelement location="selenium-2.33.0/libs/jna-platform-3.4.0.jar"/>
+        <pathelement location="selenium-2.33.0/libs/json-20080701.jar"/>
+        <pathelement location="selenium-2.33.0/libs/junit-dep-4.11.jar"/>
+        <pathelement location="selenium-2.33.0/libs/nekohtml-1.9.17.jar"/>
+        <pathelement location="selenium-2.33.0/libs/netty-3.5.7.Final.jar"/>
+        <pathelement location="selenium-2.33.0/libs/operadriver-1.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/phantomjsdriver-1.0.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/protobuf-java-2.4.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/sac-1.3.jar"/>
+        <pathelement location="selenium-2.33.0/libs/serializer-2.7.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/testng-6.8.jar"/>
+        <pathelement location="selenium-2.33.0/libs/xalan-2.7.1.jar"/>
+        <pathelement location="selenium-2.33.0/libs/xercesImpl-2.10.0.jar"/>
+        <pathelement location="selenium-2.33.0/libs/xml-apis-1.4.01.jar"/>
+        <pathelement location="selenium-2.33.0/poi-3.10-beta1-20130628.jar"/>
+        <pathelement location="selenium-2.33.0/selenium-java-2.33.0.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="com.tyyd.waptest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1006" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glink_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glink_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glink_1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glinke_1004_5_6" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_2003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_4002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_4003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1006" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1007" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1008" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1010" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1011" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1012" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1013" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1014" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1015" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1016" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1017" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1018" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1019" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1021" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1022" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1023" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1024" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1025" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1031" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1032" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1033" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1034" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1035" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2006" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2007" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2008" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2009" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2010" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2011" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2012" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2013" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagswitch_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1006" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1007" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1008" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2003" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2004" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2005" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2006" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2007" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2008" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2009" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_sclink_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_sclink_1002" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_search_1001" todir="${junit.output.dir}"/>
+            <test name="com.tyyd.waptest.tyyd_wap_search_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="login_junit">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.testwap" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="testwap.testLogin_junit">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.testwap" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_boylink_1006">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_boylink_1006" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chcomplex_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chcomplex_1001_wd">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chcomplex_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chcomplex_1003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chcomplex_1005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chcomplex_1005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chgirl_4001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chgirl_4002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chgirl_4003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chgirl_4004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chgirl_4005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chgirl_4005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_2001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_2002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_2003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_2004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_2005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_2005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_3001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_3002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_3003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_3004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_chpublish_3005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_chpublish_3005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_display_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_display_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_display_1003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_display_1004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_display_1004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_glinke_1004_5_6">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glinke_1004_5_6" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_glink_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glink_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_glink_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_glink_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_login_2003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_2003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_login_4002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_4002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_login_4003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_login_4003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1006">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1006" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1007">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1007" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1008">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1008" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1010">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1010" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1011">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1011" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1012">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1012" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1013">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1013" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1014">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1014" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1015">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1015" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1016">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1016" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1017">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1017" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1018">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1018" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1019">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1019" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1021">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1021" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1022">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1022" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1023">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1023" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1024">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1024" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1025">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1025" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1031">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1031" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1032">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1032" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1033">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1033" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1034">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1034" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagehead_L1035">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagehead_L1035" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2006">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2006" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2007">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2007" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2008">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2008" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2009">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2009" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2010">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2010" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2011">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2011" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2012">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2012" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2013">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2013" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagetail_L2014">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagetail_L2013" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pagswitch_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pagswitch_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1006">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1006" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_pzlink_1007">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_pzlink_1007" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2003">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2003" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2004">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2004" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2005">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2005" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2006">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2006" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2007">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2007" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2007.TyydWapRank2007">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2007" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2008">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2008" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_rank_2009">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_rank_2009" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_sclink_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_sclink_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_sclink_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_sclink_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_search_1001">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_search_1001" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="tyyd_wap_search_1002">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.tyyd.waptest.tyyd_wap_search_1002" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="WapTestSuite1">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="testsuite.WapTestSuite1" todir="${junit.output.dir}"/>
+            <classpath refid="WapTestProject.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
