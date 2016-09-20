@@ -1,4 +1,4 @@
 wap-project
 ===========
 
-wappage test framework demon
+selenium2.0 for wappage test
